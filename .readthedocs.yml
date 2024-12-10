@@ -1,14 +1,21 @@
-# https://docs.readthedocs.io/en/stable/guides/reproducible-builds.html#id2
 version: 2
 
 build:
-  os: ubuntu-lts-latest
+  os: ubuntu-22.04
   tools:
-    python: mambaforge-latest
-  # https://jupyterbook.org/en/stable/publish/readthedocs.html
+    python: "3.11"
   jobs:
     pre_build:
-      - jupyter-book config sphinx .
+      # Generate the Sphinx configuration for this Jupyter Book so it builds.
+      - "jupyter-book config sphinx docs/"
 
-conda:
-  environment: environment.yml
+python:
+  install:
+    - method: pip
+      path: .
+      extra_requirements:
+      - sphinx
+
+sphinx:
+  builder: html
+  fail_on_warning: true
