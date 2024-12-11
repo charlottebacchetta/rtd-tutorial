@@ -1,0 +1,7 @@
+format: jb-book
+root: Homepage.ipynb
+
+chapters:
+  - file: Project_1.ipynb
+  - file: Project_2.ipynb
+  - file: Project_3.ipynb
